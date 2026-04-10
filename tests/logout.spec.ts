@@ -22,7 +22,7 @@ test.describe('LOGOUT TEST', () => {
 
     // Xác minh rằng người dùng sẽ không thể truy 
     // cập vào các trang bị hạn chế sau khi đăng xuất.
-    test('3. Cannot access restricted page after logout', async ({ page }) => {
+    test('2. Cannot access restricted page after logout', async ({ page }) => {
         await page.goto(ENV.baseUrl);
         await expect(page).toHaveURL(/Account\/Login/);
     });
@@ -30,7 +30,7 @@ test.describe('LOGOUT TEST', () => {
     // Xác minh rằng token xác thực của người dùng sẽ 
     // bị vô hiệu hóa sau khi đăng xuất, ngăn chặn 
     // việc sử dụng token cũ để truy cập vào tài nguyên được bảo vệ.
-    test('4. Auth token invalidated after logout', async ({ page }) => {
+    test('3. Auth token invalidated after logout', async ({ page }) => {
         const token = await page.evaluate(() => localStorage.getItem('token'));
         expect(token).toBeNull();
     });
