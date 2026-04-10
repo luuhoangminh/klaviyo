@@ -4,8 +4,6 @@ import { VALID_USER, INVALID_USER } from '../config/env';
 
 test.describe('LOGIN FUNCTIONAL', () => {
 
-    // Xác minh rằng người dùng sẽ có thể đăng nhập bằng 
-    // tài khoản của họ bằng thông tin đăng nhập chính xác.
     test('TC_POS_01. Login với thông tin hợp lệ', async ({ page }) => {
         const login = new LoginPage(page);
         await login.goto();
@@ -64,9 +62,6 @@ test.describe('LOGIN FUNCTIONAL', () => {
     //     await expect(login.email).toHaveValue(VALID_USER.email);
     // });
 
-    // Xác minh rằng người dùng đăng nhập bằng 
-    // cách nhấn phím Enter sau khi nhập thông tin 
-    // đăng nhập chính xác sẽ được chuyển hướng đến trang tổng quan.
     test('TC_POS_06. Login by Enter key', async ({ page }) => {
         const login = new LoginPage(page);
         await login.goto();
@@ -95,9 +90,6 @@ test.describe('LOGIN FUNCTIONAL', () => {
         await expect(login.password).toHaveAttribute('type', 'text');
     });
 
-    // Xác minh rằng người dùng sẽ không thể đăng nhập 
-    // với thông tin đăng nhập thiếu password 
-    // và sẽ nhận được thông báo lỗi phù hợp.
     test('TC_POS_09. Error when only email entered', async ({ page }) => {
         const login = new LoginPage(page);
         await login.goto();
@@ -108,9 +100,6 @@ test.describe('LOGIN FUNCTIONAL', () => {
         await expect(login.errorMsgPass).toBeVisible();
     });
 
-    // Xác minh rằng người dùng sẽ không thể đăng nhập 
-    // với thông tin đăng nhập thiếu password 
-    // và sẽ nhận được thông báo lỗi phù hợp.
     test('TC_POS_10. Error when entered', async ({ page }) => {
         const login = new LoginPage(page);
         await login.goto();
@@ -121,9 +110,6 @@ test.describe('LOGIN FUNCTIONAL', () => {
         await expect(login.errorMsgPass).toBeVisible();
     });
 
-    // Xác minh rằng người dùng sẽ không thể đăng nhập 
-    // với thông tin đăng nhập không chính xác 
-    // và sẽ nhận được thông báo lỗi phù hợp.
     test('TC_POS_11. Invalid credential error', async ({ page }) => {
         const login = new LoginPage(page);
         await login.goto();
@@ -135,9 +121,6 @@ test.describe('LOGIN FUNCTIONAL', () => {
         await expect(login.errorMsg).toBeVisible();
     });
 
-    // Xác minh rằng người dùng sẽ không thể đăng nhập 
-    // với username không hợp lệ 
-    // và sẽ nhận được thông báo lỗi phù hợp.
     test('TC_POS_12. Error invalid email format', async ({ page }) => {
         const login = new LoginPage(page);
         await login.goto();
@@ -147,9 +130,6 @@ test.describe('LOGIN FUNCTIONAL', () => {
         await expect(login.errorMsg).toBeVisible();
     });
 
-    // Xác minh rằng người dùng sẽ không thể đăng nhập
-    // với nội dung SQL Injection trong trường username hoặc password
-    // và sẽ nhận được thông báo lỗi phù hợp.
     test('TC_POS_13. SQL Injection prevention', async ({ page }) => {
         const login = new LoginPage(page);
         await login.goto();
